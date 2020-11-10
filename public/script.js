@@ -3,6 +3,7 @@ const table = document.getElementById('chatTable')
 const button = document.getElementById('send')
 const image_button = document.getElementById('sendimage')
 const inputbox = document.getElementById('text')
+const onlinebox = document.getElementById('who-are-online')
 
 let name;
 do {
@@ -22,6 +23,10 @@ socket.on('user-connected', name => {
 
 socket.on('user-disconnected', name => {
   appendMessage('Server'+'\u0123'+`${name}` +` disconnected`)
+})
+
+socket.on('show-online', info => {
+  $("#who-are-online").text(info);
 })
 
 
